@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./frontend/screenshots/screencapture-localhost-3000-2021-07-13-02_40_01.png)
+![](./frontend/screenshots/screencapture-localhost-3000-2021-07-13-12_38_36.png)
 
 ### Links
 

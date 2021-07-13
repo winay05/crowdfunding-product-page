@@ -96,14 +96,14 @@ function Dashboard(props) {
                 <PledgeModal
                   products={props.products}
                   selected={el.name}
-                  text="Select Awards"
+                  text="Select reward"
                   BtnDisabled={!el.leftStock}
                   submitPledge={props.submitPledge}
                   raisedMoney={props.raisedMoney}
                   backers={props.backers}
                 />
                 {/* <button class="pledge-button" disabled={!el.leftStock}>
-                    Select Awards
+                    Select reward
                   </button> */}
               </Row>
             </div>
