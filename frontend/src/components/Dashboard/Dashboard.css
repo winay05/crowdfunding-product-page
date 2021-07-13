@@ -33,8 +33,26 @@
   #bookmark > span {
     display: none;
   }
+
+  #stats.row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .divider {
+    width: 90%;
+    height: 1px;
+
+    background-color: lightgray;
+  }
 }
 
+.divider {
+  background-color: lightgray;
+  width: 1px;
+  height: auto;
+}
 #bookmark > img {
   border-radius: 50%;
 }

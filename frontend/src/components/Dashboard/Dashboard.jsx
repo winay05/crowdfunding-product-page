@@ -55,16 +55,18 @@ function Dashboard(props) {
               <h4>${props.raisedMoney}</h4>
               <p>of ${props.data.targetMoney} backed</p>
             </div>
+            <div className="divider"></div>
             <div className="col-12 col-sm-4">
               <h4>{props.backers}</h4>
               <p>total backers</p>
             </div>
-            <div className="col-12 col-sm-4">
+            <div className="divider"></div>
+            <div className="col-12 col-sm-3">
               <h4>{props.data.daysLeft}</h4>
               <p>days left</p>
             </div>
           </div>
-          <div className="progress-bar">
+          <div className="progress-bar mt-2">
             <div
               style={{
                 width: `${(props.raisedMoney * 100) / props.data.targetMoney}%`,
