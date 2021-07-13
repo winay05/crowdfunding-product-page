@@ -1,0 +1,46 @@
+.modal-header {
+  display: block;
+  border-bottom: none;
+}
+.modal-header .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.modal-card {
+  border: 0.1rem solid lightgrey;
+  text-align: left;
+  background-color: white;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+}
+label span {
+  display: inline;
+  margin-right: 1rem;
+}
+@media screen and (max-width: 500px) {
+  .modal-card {
+    display: flex;
+    flex-direction: column;
+  }
+  label span {
+    display: block;
+  }
+}
+.modal-card-disabled {
+  opacity: 0.6;
+}
+.pledge-input,
+.pledge-input:focus {
+  border: none;
+  padding: 1rem;
+}
+.pledge-input:invalid {
+  border: red 0.1rem solid;
+}
+
+button:disabled {
+  opacity: 0.6;
+}

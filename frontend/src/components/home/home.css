@@ -1,0 +1,19 @@
+.header {
+  height: 50vh;
+  background-image: url("../../../src/images/image-hero-desktop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+@media screen and (max-width: 376px) {
+  .header {
+    background-image: url("../../../src/images/image-hero-mobile.jpg");
+  }
+}
+.navbar {
+  background-color: transparent !important;
+}
+.navbar a {
+  color: white !important;
+}
