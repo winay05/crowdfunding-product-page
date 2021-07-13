@@ -3,6 +3,7 @@
     background-color: white;
     border-radius: 10px;
     /* padding-left: 10px; */
+    margin-left: auto;
   }
 
   .nav-items a:not(:first-child) {
@@ -19,6 +20,16 @@
     /* width: 100%; */
   }
 }
+
+.nav-items a {
+  transition: 0.2s;
+}
+@media screen and (min-width: 992px) {
+  .nav-items a:hover {
+    transform: scale(1.2) !important;
+  }
+}
+
 .nav-items p {
   font-weight: 800;
 }

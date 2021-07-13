@@ -73,6 +73,7 @@ export default class PledgeModal extends Component {
               style={pledgeButton}
               disabled={this.props.BtnDisabled}
               onClick={() => this.setShow(true)}
+              className="show-hover"
             >
               {this.props.text}
             </Button>
@@ -133,7 +134,10 @@ export default class PledgeModal extends Component {
                     >
                       <hr />
 
-                      <button class="pledge-button" onClick={this.submitPledge}>
+                      <button
+                        class="pledge-button show-hover"
+                        onClick={this.submitPledge}
+                      >
                         Continue
                       </button>
                     </div>
@@ -211,7 +215,7 @@ export default class PledgeModal extends Component {
                               type="number"
                             />
                             <button
-                              class="pledge-button"
+                              class="pledge-button show-hover"
                               disabled={this.state.pledge < el.minPledge}
                               onClick={this.submitPledge}
                             >

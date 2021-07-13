@@ -26,6 +26,7 @@ function Dashboard(props) {
 
             {/* <button className="pledge-button">Back this project</button> */}
             <button
+              className="show-hover"
               id="bookmark"
               style={
                 props.bookmarked

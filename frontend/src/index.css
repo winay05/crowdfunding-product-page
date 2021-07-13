@@ -30,3 +30,19 @@ h6,
   font-weight: 700;
   color: black;
 }
+
+.show-hover {
+  transition: 0.2s !important;
+}
+.show-hover:hover {
+  background-color: #007575 !important;
+  color: white !important;
+
+  transform: scale(1.1) !important;
+}
+a.show-hover:hover {
+  background-color: inherit !important;
+  color: white !important;
+
+  transform: scale(1.1) !important;
+}
