@@ -15,7 +15,7 @@ function Dashboard(props) {
           />
           <h3>{props?.data?.title}</h3>
           <p>{props?.data?.subtitle}</p>
-          <div className="actions">
+          <div className="actions mt-3">
             <PledgeModal
               products={props.products}
               text="Back this project"
@@ -76,7 +76,7 @@ function Dashboard(props) {
           </div>
         </div>
         <div className="card" id="about">
-          <h4>About this project</h4>
+          <h5>About this project</h5>
           <br />
           {props.data.about.split("\n").map((el) => (
             <p>{el}</p>

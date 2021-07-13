@@ -27,6 +27,6 @@ h4,
 h5,
 h6,
 [class*="-title"] {
-  font-weight: 600;
+  font-weight: 700;
   color: black;
 }

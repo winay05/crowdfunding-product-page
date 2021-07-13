@@ -1,6 +1,6 @@
 .dashboard-container {
   position: relative;
-  top: -3rem;
+  top: -5rem;
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 10px;
   margin-bottom: 2rem;
 }
