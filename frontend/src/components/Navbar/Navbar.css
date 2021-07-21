@@ -2,7 +2,6 @@
   .nav-items {
     background-color: white;
     border-radius: 10px;
-    /* padding-left: 10px; */
     margin-left: auto;
   }
 
@@ -34,5 +33,5 @@
   font-weight: 800;
 }
 .navbar-toggler-icon {
-  background-image: url("./../../images/icon-hamburger.svg") !important;
+  background-image: url("./icon-hamburger.svg") !important;
 }

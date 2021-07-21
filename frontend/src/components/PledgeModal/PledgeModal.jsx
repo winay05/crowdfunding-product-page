@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Button, Modal, Row } from "react-bootstrap";
-import "./PledgeModal.css";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import PledgeCard from "./PledgeCard";
 
-const pledgeButton = {
-  padding: "0.7em",
-  backgroundColor: "darkcyan",
-  color: "white",
-};
+import "./PledgeModal.css";
+
+const DEFAULT_SELECTED = "No reward";
 
 export default class PledgeModal extends Component {
   constructor(props) {
@@ -18,9 +16,6 @@ export default class PledgeModal extends Component {
       pledge: 0,
       showSuccess: false,
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.submitPledge = this.submitPledge.bind(this);
-    this.setShow = this.setShow.bind(this);
   }
 
   handleChange = (e) => {
@@ -70,10 +65,9 @@ export default class PledgeModal extends Component {
         ) : (
           <>
             <Button
-              style={pledgeButton}
               disabled={this.props.BtnDisabled}
               onClick={() => this.setShow(true)}
-              className="show-hover"
+              className="pledge-button show-hover"
             >
               {this.props.text}
             </Button>
@@ -83,23 +77,21 @@ export default class PledgeModal extends Component {
               onHide={() => this.setShow(false)}
             >
               <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                  Back this project
-                </Modal.Title>
+                <Modal.Title>Back this project</Modal.Title>
                 <p>
                   Want to support us in bringing Mastercraft Bamboo Riser out in
                   the world?
                 </p>
               </Modal.Header>
               <Modal.Body>
+                {/* pledge with no reward */}
                 <label htmlFor="No reward">
                   <div
-                    style={
-                      this.state.selected === "No reward"
-                        ? { border: "2px solid darkcyan" }
-                        : { border: "0.1rem solid lightgrey" }
-                    }
-                    className="modal-card"
+                    className={`modal-card ${
+                      this.state.selected === DEFAULT_SELECTED
+                        ? "modal-card--selected"
+                        : ""
+                    }`}
                   >
                     <Row
                       style={{ margin: 0 }}
@@ -113,10 +105,7 @@ export default class PledgeModal extends Component {
                           onChange={this.handleChange}
                           checked={this.state.selected === "No reward"}
                         />
-                        {"  "}
-                        <h5 style={{ display: "inline", marginRight: "1rem" }}>
-                          Pledge with no reward
-                        </h5>
+                        <h5 className="title">Pledge with no reward</h5>
                       </span>
                     </Row>
                     <p>
@@ -125,12 +114,9 @@ export default class PledgeModal extends Component {
                       to receive product updates via email.
                     </p>
                     <div
-                      className="actions"
-                      style={
-                        this.state.selected === "No reward"
-                          ? { display: "block" }
-                          : { display: "none" }
-                      }
+                      className={`actions ${
+                        this.state.selected !== DEFAULT_SELECTED ? "hide" : ""
+                      }`}
                     >
                       <hr />
 
@@ -143,88 +129,17 @@ export default class PledgeModal extends Component {
                     </div>
                   </div>
                 </label>
+
                 {this.props?.products?.map((el) => (
                   <>
-                    <label htmlFor={el.name}>
-                      <div
-                        style={
-                          el.name === this.state.selected
-                            ? { border: "2px solid darkcyan" }
-                            : { border: "0.1rem solid lightgrey" }
-                        }
-                        className={
-                          !el.leftStock
-                            ? "modal-card-disabled modal-card"
-                            : "modal-card"
-                        }
-                      >
-                        <Row
-                          style={{ margin: 0 }}
-                          className="d-flex justify-content-between"
-                        >
-                          <span>
-                            <input
-                              type="radio"
-                              name="selected-project"
-                              disabled={!el.leftStock}
-                              id={el.name}
-                              onChange={this.handleChange}
-                              checked={el.name === this.state.selected}
-                            />{" "}
-                            <h5
-                              style={{ display: "inline", marginRight: "1rem" }}
-                            >
-                              {el.name}
-                            </h5>
-                          </span>
-                          <span className="pledge-text">
-                            Pledge ${el.minPledge} or more
-                          </span>
-                        </Row>
-                        <br />
-                        <p>{el.about}</p>
-                        <div>
-                          <h5 style={{ display: "inline" }}>{el.leftStock} </h5>
-                          left
-                        </div>
-
-                        <div
-                          style={
-                            el.name === this.state.selected
-                              ? { display: "block" }
-                              : { display: "none" }
-                          }
-                        >
-                          <hr />
-                          <Row
-                            style={{ margin: 0 }}
-                            className="actions d-flex justify-content-between align-items-center"
-                          >
-                            <input
-                              min={el.minPledge}
-                              className="pledge-input"
-                              placeholder="Enter your pledge"
-                              value={
-                                this.state.pledge === 0
-                                  ? undefined
-                                  : this.state.pledge
-                              }
-                              onChange={(e) =>
-                                this.changePledge(e.target.value)
-                              }
-                              type="number"
-                            />
-                            <button
-                              class="pledge-button show-hover"
-                              disabled={this.state.pledge < el.minPledge}
-                              onClick={this.submitPledge}
-                            >
-                              Continue
-                            </button>
-                          </Row>
-                        </div>
-                      </div>
-                    </label>
+                    <PledgeCard
+                      el={el}
+                      selected={this.state.selected}
+                      handleChange={this.handleChange}
+                      pledge={this.state.pledge}
+                      changePledge={this.changePledge}
+                      submitPledge={this.submitPledge}
+                    />
                   </>
                 ))}
               </Modal.Body>

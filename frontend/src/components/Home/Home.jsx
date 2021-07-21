@@ -1,8 +1,18 @@
-import Navigation from "../navbar/navbar";
-import Dashboard from "./../Dashboard/Dashboard";
-import "./home.css";
-import data from "./../../data/data";
+import Navigation from "../Navbar/Navbar";
+import Dashboard from "../Dashboard/Dashboard";
+import "./Home.css";
+import data from "../../data/data";
 import { Component } from "react";
+
+const navLinks = [
+  { name: "About" },
+  {
+    name: "Discover",
+  },
+  {
+    name: "Get Started",
+  },
+];
 
 class Home extends Component {
   constructor(props) {
@@ -17,33 +27,37 @@ class Home extends Component {
   bookmark = () => {
     this.setState({ bookmarked: !this.state.bookmarked });
   };
+
+  calcUpdatedProduct = (product) => {
+    let newProducts = [
+      { ...product, leftStock: product?.leftStock * 1 - 1 },
+      ...this.state.products.filter((el) => el.name !== product?.name),
+    ];
+
+    return newProducts;
+  };
+
   submitPledge = (val, product) => {
-    if (!product) {
+    if (product) {
       this.setState((state) => {
         return {
           raisedMoney: state.raisedMoney * 1 + val * 1,
-          backers: state.backers * 1 + 1,
-        };
-      });
-    } else {
-      this.setState((state) => {
-        return {
-          raisedMoney: state.raisedMoney * 1 + val * 1,
-          backers: state.backers + 1,
-          products: [
-            { ...product, leftStock: product?.leftStock * 1 - 1 },
-            ...this.state.products.filter((el) => el.name !== product?.name),
-          ],
+          products: this.calcUpdatedProduct(product),
         };
       });
     }
+    this.setState((state) => {
+      return {
+        backers: state.backers * 1 + 1,
+      };
+    });
   };
+
   render() {
-    // console.log(this.state.products);
     return (
       <>
         <div className="header">
-          <Navigation className="navbar" />
+          <Navigation className="navbar" navLinks={navLinks} />
         </div>
 
         <Dashboard

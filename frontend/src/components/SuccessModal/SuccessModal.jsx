@@ -1,13 +1,8 @@
 import React from "react";
 
 import { Modal, Button } from "react-bootstrap";
-const modalBody = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "2rem",
-};
+import styles from "./styles.js";
+
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -16,22 +11,18 @@ function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Body style={modalBody}>
-        <img
-          src="icon-check.svg"
-          alt=""
-          style={{ marginBottom: "1rem", height: 60, width: 60 }}
-        />
+      <Modal.Body style={styles.modalBody}>
+        <img src="icon-check.svg" alt="" style={styles.checkIcon} />
         <h4>Thanks for your support!</h4>
-        <p style={{ textAlign: "center" }}>
+        <p style={styles.text}>
           Your pledge brings us one step closer to sharing Mastercraft Bamboo
           Monitor Riser worldwide. You will get an email once our campaign is
           completed.
         </p>
 
         <Button
-          style={{ paddingLeft: 20, paddingRight: 20 }}
-          className="actions pledge-button"
+          style={styles.buttonStyles}
+          className="actions pledge-button show-hover"
           onClick={props.onHide}
         >
           Close
@@ -50,10 +41,6 @@ export default function SuccessModal(props) {
   };
   return (
     <>
-      {/* <Button onClick={() => {setModalShow(true); props.showSuccessModal();}}>
-        Launch vertically centered modal
-      </Button> */}
-
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => handleClose()}
